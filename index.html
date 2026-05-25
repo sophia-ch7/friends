@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-blob blob-orange"></div>
+    <div class="bg-blob blob-white"></div>
+    <div class="bg-blob blob-sand"></div>
+
+    <div id="toast-container"></div>
+
+    <main id="auth-screen" class="screen-container">
+      <div class="glass-panel auth-panel">
+        <div class="auth-header">
+          <span class="logo-text">Friends Lab</span>
+          <div class="auth-tabs">
+            <button id="tab-login" class="tab-btn active" type="button">
+              Log in
+            </button>
+            <button id="tab-signup" class="tab-btn" type="button">
+              Sign up
+            </button>
+          </div>
+        </div>
+
+        <form id="login-form" class="auth-form active">
+          <h1>Log in</h1>
+          <div class="input-wrap">
+            <span class="icon">@</span>
+            <input
+              type="text"
+              id="login-email"
+              placeholder="e-mail or username"
+              required
+            />
+          </div>
+          <div class="input-wrap">
+            <span class="icon">🔑</span>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="password"
+              required
+              minlength="6"
+            />
+          </div>
+          <div class="auth-footer">
+            <p class="terms">
+              Join to find friends. Please consume responsibly!
+            </p>
+            <button type="submit" class="btn-round">→</button>
+          </div>
+        </form>
+
+        <form id="signup-form" class="auth-form hidden">
+          <h1>Sign up</h1>
+          <div class="input-wrap">
+            <span class="icon">👤</span>
+            <input
+              type="text"
+              id="signup-name"
+              placeholder="Full name"
+              required
+            />
+          </div>
+          <div class="input-wrap">
+            <span class="icon">@</span>
+            <input
+              type="email"
+              id="signup-email"
+              placeholder="e-mail address"
+              required
+            />
+          </div>
+          <div class="input-wrap">
+            <span class="icon">🔑</span>
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="password"
+              required
+              minlength="6"
+            />
+          </div>
+          <div class="auth-footer">
+            <p class="terms">By signing up you agree to our terms.</p>
+            <button type="submit" class="btn-round">→</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <main id="app-screen" class="screen-container hidden">
+      <header class="glass-panel app-header">
+        <h2>Friends Lab</h2>
+        <div class="header-actions">
+          <button id="btn-toggle-saved" class="btn-text" type="button">
+            Show Saved (0)
+          </button>
+          <button id="btn-logout" class="btn-dark" type="button">
+            Log out
+          </button>
+        </div>
+      </header>
+
+      <section class="glass-panel controls-panel">
+        <div class="search-box">
+          <input
+            type="text"
+            id="filter-name"
+            class="glass-input full-width"
+            placeholder="🔍 Search by name... (Debounce)"
+          />
+        </div>
+
+        <div class="filters-grid">
+          <select id="sort-select" class="glass-input">
+            <option value="" disabled selected>Sort by...</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="age-asc">Age (Youngest)</option>
+            <option value="age-desc">Age (Oldest)</option>
+            <option value="reg-asc">Registration Date</option>
+          </select>
+          <input
+            type="number"
+            id="filter-age-min"
+            class="glass-input"
+            placeholder="Min Age"
+          />
+          <input
+            type="number"
+            id="filter-age-max"
+            class="glass-input"
+            placeholder="Max Age"
+          />
+          <input
+            type="number"
+            id="filter-year"
+            class="glass-input"
+            placeholder="Birth Year"
+          />
+          <input
+            type="text"
+            id="filter-location"
+            class="glass-input"
+            placeholder="Location"
+          />
+          <input
+            type="text"
+            id="filter-email"
+            class="glass-input"
+            placeholder="Email contains"
+          />
+          <button id="btn-reset" class="btn-text" type="button">
+            Reset Filters
+          </button>
+        </div>
+      </section>
+
+      <section id="users-container" class="users-grid"></section>
+
+      <div class="pagination-wrapper">
+        <div id="loader" class="loader hidden">Loading...</div>
+        <div class="glass-panel pagination-box">
+          <span>Loaded pages:</span>
+          <div id="pagination-pages" class="pages-list"></div>
+        </div>
+      </div>
+
+      <div id="scroll-anchor"></div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
